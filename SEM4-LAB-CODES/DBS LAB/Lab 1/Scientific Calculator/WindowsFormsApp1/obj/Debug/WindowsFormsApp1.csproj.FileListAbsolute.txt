@@ -1,0 +1,30 @@
+E:\4th Sem\DBS LAB\Lab 1\Scientific Calculator\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+E:\4th Sem\DBS LAB\Lab 1\Scientific Calculator\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+E:\4th Sem\DBS LAB\Lab 1\Scientific Calculator\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+E:\4th Sem\DBS LAB\Lab 1\Scientific Calculator\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache
+E:\4th Sem\DBS LAB\Lab 1\Scientific Calculator\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Calculator.resources
+E:\4th Sem\DBS LAB\Lab 1\Scientific Calculator\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+E:\4th Sem\DBS LAB\Lab 1\Scientific Calculator\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+E:\4th Sem\DBS LAB\Lab 1\Scientific Calculator\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+E:\4th Sem\DBS LAB\Lab 1\Scientific Calculator\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+E:\4th Sem\DBS LAB\Lab 1\Scientific Calculator\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+E:\4th Sem\DBS LAB TRIAL\Scientific Calculator\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+E:\4th Sem\DBS LAB TRIAL\Scientific Calculator\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+E:\4th Sem\DBS LAB TRIAL\Scientific Calculator\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+E:\4th Sem\DBS LAB TRIAL\Scientific Calculator\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache
+E:\4th Sem\DBS LAB TRIAL\Scientific Calculator\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Calculator.resources
+E:\4th Sem\DBS LAB TRIAL\Scientific Calculator\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+E:\4th Sem\DBS LAB TRIAL\Scientific Calculator\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+E:\4th Sem\DBS LAB TRIAL\Scientific Calculator\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+E:\4th Sem\DBS LAB TRIAL\Scientific Calculator\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+E:\4th Sem\DBS LAB TRIAL\Scientific Calculator\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+E:\SEM4-LAB-CODES\DBS LAB\Lab 1\Scientific Calculator\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+E:\SEM4-LAB-CODES\DBS LAB\Lab 1\Scientific Calculator\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+E:\SEM4-LAB-CODES\DBS LAB\Lab 1\Scientific Calculator\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+E:\SEM4-LAB-CODES\DBS LAB\Lab 1\Scientific Calculator\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache
+E:\SEM4-LAB-CODES\DBS LAB\Lab 1\Scientific Calculator\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Calculator.resources
+E:\SEM4-LAB-CODES\DBS LAB\Lab 1\Scientific Calculator\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+E:\SEM4-LAB-CODES\DBS LAB\Lab 1\Scientific Calculator\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+E:\SEM4-LAB-CODES\DBS LAB\Lab 1\Scientific Calculator\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+E:\SEM4-LAB-CODES\DBS LAB\Lab 1\Scientific Calculator\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+E:\SEM4-LAB-CODES\DBS LAB\Lab 1\Scientific Calculator\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb

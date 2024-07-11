@@ -1,0 +1,167 @@
+CREATE TABLE PERSON(
+driver_id varchar(30),
+name varchar(50),
+address varchar(100),
+PRIMARY KEY(driver_id)
+);
+
+--------------------------------------------------------------------------------------------
+
+
+CREATE TABLE CAR(
+regno varchar(20),
+model varchar(30),
+Year int,
+PRIMARY KEY(regno)
+);
+
+--------------------------------------------------------------------------------------------
+
+
+CREATE TABLE ACCIDENT(
+report_number int,
+accd_date date,
+location varchar(50),
+PRIMARY KEY(report_number)
+);
+
+--------------------------------------------------------------------------------------------
+
+
+CREATE TABLE OWNS(
+driver_id varchar(30),
+regno varchar(20),
+PRIMARY KEY(driver_id,regno),
+FOREIGN KEY (driver_id) references PERSON(driver_id),
+FOREIGN KEY (regno) references CAR(regno)
+);
+
+--------------------------------------------------------------------------------------------
+
+
+CREATE TABLE PARTICIPATED(
+driver_id varchar(30),
+regno varchar(20),
+report_number int,
+damage_amount int,
+PRIMARY KEY(driver_id,regno,report_number),
+FOREIGN KEY (driver_id) references PERSON(driver_id),
+FOREIGN KEY (regno) references CAR(regno),
+FOREIGN KEY (report_number) references ACCIDENT(report_number) on delete cascade
+);
+
+--------------------------------------------------------------------------------------------
+
+
+INSERT INTO PERSON VALUES('D001','Jim','Manipal');
+INSERT INTO PERSON VALUES('D002','Tim','Udupi');
+INSERT INTO PERSON VALUES('D003','Kim','Malpe');
+INSERT INTO PERSON VALUES('D004','Lin','Manipal');
+INSERT INTO PERSON VALUES('D005','John','Udupi');
+
+--------------------------------------------------------------------------------------------
+
+
+INSERT INTO CAR VALUES('KA20A5512','Wagon-R','2016');
+INSERT INTO CAR VALUES('KA21C4502','Nano','2019');
+INSERT INTO CAR VALUES('KA70A9982','S-Cross','2020');
+INSERT INTO CAR VALUES('KA83A5512','Eco-Sport','2018');
+INSERT INTO CAR VALUES('KA20MC1228','BMW','2017');
+
+--------------------------------------------------------------------------------------------
+
+
+INSERT INTO ACCIDENT VALUES(1221, DATE '2023-03-15','Manglore');
+INSERT INTO ACCIDENT VALUES(1341, DATE '2023-11-11','Kolam');
+INSERT INTO ACCIDENT VALUES(2452, DATE '2022-04-15','Kasargod');
+INSERT INTO ACCIDENT VALUES(8814, DATE '2021-08-22','Nehr Nagar');
+INSERT INTO ACCIDENT VALUES(5638, DATE '2022-10-25','Awadh');
+INSERT INTO ACCIDENT VALUES(5639, DATE '2022-12-05','Awadh');
+
+--------------------------------------------------------------------------------------------
+
+INSERT INTO OWNS VALUES('D002','KA21C4502');
+INSERT INTO OWNS VALUES('D003','KA70A9982');
+INSERT INTO OWNS VALUES('D002','KA20A5512');
+INSERT INTO OWNS VALUES('D001','KA83A5512');
+INSERT INTO OWNS VALUES('D004','KA20MC1228');
+
+--------------------------------------------------------------------------------------------
+
+INSERT INTO PARTICIPATED VALUES('D002','KA21C4502',1221,50000);
+INSERT INTO PARTICIPATED VALUES('D003','KA70A9982',1341,30000);
+INSERT INTO PARTICIPATED VALUES('D002','KA21C4502',2452,10000);
+INSERT INTO PARTICIPATED VALUES('D001','KA83A5512',5638,12000);
+INSERT INTO PARTICIPATED VALUES('D004','KA20MC1228',8814,23000);
+INSERT INTO PARTICIPATED VALUES('D001','KA83A5512',5639,15000);
+
+QUESTION 2_______________________________________________________
+
+CREATE OR REPLACE TRIGGER driver_info
+AFTER INSERT ON participated
+FOR EACH ROW
+DECLARE
+    did person.driver_id%TYPE;
+    n person.name%TYPE;
+    adr person.address%TYPE;
+BEGIN
+    did := :new.driver_id;
+    SELECT name, address INTO n, adr FROM person WHERE driver_id = did;
+    DBMS_OUTPUT.PUT_LINE('Name: ' || n || ', Driver ID: ' || did || ', Address: ' || adr);
+END;
+/
+
+
+
+QUESTION 3_______________________________________________________________
+CREATE OR REPLACE FUNCTION get_total_accidents(yr IN VARCHAR2)
+RETURN NUMBER
+IS
+    no_of_accd NUMBER;
+BEGIN
+    SELECT COUNT(report_number) INTO no_of_accd
+    FROM accident
+    WHERE EXTRACT(YEAR FROM accd_date) = yr;
+    
+    RETURN no_of_accd;
+END;
+/
+
+-- Testing the function
+SELECT accd_fn('2022') FROM dual;
+
+
+
+
+QUESTION 4__________________________________________________________________
+set serveroutput on
+create or replace procedure damage(did in varchar,year_in in varchar)
+as 
+	tot_dmg_amt integer;
+begin
+  select sum(damage_amount) into tot_dmg_amt
+  from participated
+  where report_number in (select report_number
+  	from accident 
+  	where extract(year from accd_date)=year_in)
+ 	and driver_id=did;
+ DBMS_OUTPUT.PUT_LINE('Total damages in ' || year_in || ' : ' ||tot_dmg_amt);
+end;
+/
+execute damage('D002', 2023);
+execute damage('D004', 2021);
+
+
+QUESTION 5______________________________________________________________________________
+set serveroutput on
+create or replace procedure location_info(loc in varchar2)
+is
+begin    
+    for i in (select name,participated.driver_id as D,report_number,accd_date
+    from accident natural join participated,person
+    where person.driver_id=participated.driver_id and location = loc)
+    loop
+        dbms_output.put_line(i.name || ' ' || i.D || ' ' || i.report_number || ' ' || i.acc_date);
+    end loop;
+end;
+execute location_info('Udupi');

@@ -1,0 +1,183 @@
+QUESTION ONE
+create table student
+    (regno varchar(20),
+      name varchar(20), 
+      major varchar(20),
+      bdate date,
+      primary key(regno));
+--------------------------------------------------------------------------------------------
+ create  table course
+    (course# int,
+ cname varchar(30), 
+dept varchar(30),
+    primary key(course#));
+-------------------------------------------------------------------------------------------	
+create table text
+    (book_isbn int, 
+    booktitle varchar(20), 
+    publisher varchar(20), 
+    author varchar(20),
+    primary key(book_isbn));
+--------------------------------------------------------------------------------------------
+create table book_adoption
+    (course# int, 
+    sem int,
+    book_isbn int,
+    foreign key(course#) references course(course#),
+    foreign key(book_isbn) references text (book_isbn));
+---------------------------------------------------------------------------------------------
+create table enroll
+   (regno varchar(20), course# int, sem int, book_isbn int,
+   foreign key(regno) references student(regno),
+   foreign key(course#) references course(course#),
+   foreign key(book_isbn) references text (book_isbn));
+---------------------------------------------------------------------------------------------
+QUESTION TWO
+insert into student(regno, name, major, bdate) values (1, 'Jake', 'IT', date '1980-1-1');
+insert into student(regno, name, major, bdate) values (2, 'Amy','Math', date '1980-1-11');
+insert into student(regno, name, major, bdate) values (3, 'Rosa', 'Communication', date '1989-2-2');
+insert into student(regno, name, major, bdate) values (4, 'Terry', 'Communication', date '1989-12-12');
+insert into student(regno, name, major, bdate) values (5, 'Gina', 'IT', date '1989-7-12');
+---------------------------------------------------------------------------------------------
+ insert into course(course#, cname, dept) values (101, 'DS', 'ICT');
+ insert into course(course#, cname, dept) values (102, 'OOP', 'ICT');
+ insert into course(course#, cname, dept) values (103, 'PDC', 'ICT');
+ insert into course(course#, cname, dept) values (104, 'CN', 'ICT');
+ insert into course(course#, cname, dept) values (201, 'ENG-MATH', 'DSE');
+ insert into course(course#, cname, dept) values (202, 'Statistics', 'DSE');
+------------------------------------------------------------------------------------------------------------------
+ insert into text(book_isbn, booktitle, publisher, author) values (1111, 'ds in c', 'NYPD', 'holt');
+ insert into text(book_isbn, booktitle, publisher, author) values (1112, 'intro to ds', 'NYPD', 'holt');
+ insert into text(book_isbn, booktitle, publisher, author) values (2222, 'intro to oop', 'NYPD', 'boyle');
+ insert into text(book_isbn, booktitle, publisher, author) values (3333, 'intro to cn', 'eras', 'scully');
+ insert into text(book_isbn, booktitle, publisher, author) values (4444, 'pdc intro', 'eras', 'norman');
+ insert into text(book_isbn, booktitle, publisher, author) values (5555, 'math', 'eras', 'lorie');
+ insert into text(book_isbn, booktitle, publisher, author) values (6666, 'intro to stats', 'eras', 'eve');
+ insert into text(book_isbn, booktitle, publisher, author) values (7777, 'ADVANCED stats', 'eras', 'eve');
+insert into text(book_isbn, booktitle, publisher, author) values (8888, 'FOLKLORE', 'WB', 'eve');
+------------------------------------------------------------------------------------------------------------------
+
+insert into book_adoption(course#, sem, book_isbn) values (101, 1, 1111);
+insert into book_adoption(course#, sem, book_isbn) values (101, 1, 1112);
+insert into book_adoption(course#, sem, book_isbn) values (102, 1, 2222);
+insert into book_adoption(course#, sem, book_isbn) values (103, 1, 4444);
+insert into book_adoption(course#, sem, book_isbn) values (104, 1, 3333);
+insert into book_adoption(course#, sem, book_isbn) values (201, 1, 5555);
+insert into book_adoption(course#, sem, book_isbn) values (202, 1, 6666);
+insert into book_adoption(course#, sem, book_isbn) values (202, 1, 7777);
+------------------------------------------------------------------------------------------------------------------
+
+ insert into enroll ( regno, course#, sem, book_isbn) values (2, 101, 1, 1111);
+ insert into enroll ( regno, course#, sem, book_isbn) values (2, 101, 1, 1112);
+ insert into enroll ( regno, course#, sem, book_isbn) values (2, 201, 1, 5555);
+ insert into enroll ( regno, course#, sem, book_isbn) values (3,102,1,2222);
+ insert into enroll ( regno, course#, sem, book_isbn) values (3,202,1,6666);
+ insert into enroll ( regno, course#, sem, book_isbn) values (4, 101, 1, 1111);
+ insert into enroll ( regno, course#, sem, book_isbn) values (4, 103, 1, 4444);
+ insert into enroll ( regno, course#, sem, book_isbn) values (4, 104, 1, 3333);
+ insert into enroll ( regno, course#, sem, book_isbn) values (5, 101, 1, 1111);
+
+QUESTION THREE
+
+-------------------------------------------------------------------------------------------------------------------
+ select *
+ from course c 
+where c.course# in (SELECT b.course# 
+			from book_adoption b natural join text 
+			group by course# having count(*)>1);
+-------------------------------------------------------------------------------------------------------------------
+	select distinct(dept) from course natural join book_adoption natural join text 
+	where publisher ='eras' and dept in
+  	( select dept from book_adoption natural join course natural join text 
+	group by dept having count(distinct 
+	publisher)=1);
+
+	or
+
+	select dept from book_adoption natural join course natural join text 
+	group by dept having count(distinct publisher)=1;
+
+-------------------------------------------------------------------------------------------------------------------
+	select regno , name from student s where regno in
+      (select regno from enroll natural join course group by regno
+      having count(distinct dept)>1);
+-------------------------------------------------------------------------------------------------------------------
+	select *
+	from student 
+	where regno not in(select distinct(regno) from enroll);
+
+E-------------------------------------------------------------------------------------------------------------------
+	select dept, publisher
+	from (course natural join book_adoption natural natural join text) 
+	group by dept, publisher
+	having count(*) = ( select count(*) from text where publisher='NYPD') and publisher='NYPD';
+
+		or
+	select dept
+	from course natural join book_adoption natural join text
+	group by dept
+	having count(distinct (publisher))=1;
+F-------------------------------------------------------------------------------------------------------------------
+	select * 
+	from text where book_isbn in (select distinct(book_isbn) from book_adoption natural join enroll); 
+
+H-------------------------------------------------------------------------------------------------------------------
+	SELECT regno from enroll 
+	group by regno having count(*)=(select max(count(*)) from enroll group by regno);
+
+	select regno, name
+	from student
+	where regno in (SELECT regno from enroll 
+	group by regno having count(*)=(select max(count(*)) from enroll group by regno));
+
+I_________________________________________________________________________________________________________________
+	select publisher,
+    (select count(*) 
+    from text t2 
+    where t1.publisher=t2.publisher) as Number_of_Books
+	from text t1
+	group by publisher;
+
+J__________________________________________________________________________________________________________________
+SELECT regno, name, course#
+FROM student s
+NATURAL JOIN enroll e
+NATURAL JOIN book_adoption b
+GROUP BY regno, course#
+HAVING COUNT(*) = (
+    SELECT COUNT(*) 
+    FROM course
+    NATURAL JOIN book_adoption
+    GROUP BY course#
+    HAVING course# = b.course#
+)
+ORDER BY regno;
+
+
+_________________________________________________________________________________________________________________
+
+ADDITIONALS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+________________________________________________________________________________________________________________
+QUESTION 1
+ SELECT * FROM CUSTOMER WHERE CITY IS NULL;
+
+QUESTION 2
+	SELECT * FROM CUSTOMER WHERE CUST_ID IN
+	(SELECT CUST_ID
+	FROM  ORDERS
+	GROUP BY CUST_ID
+	HAVING SUM(ORDAMT)=(SELECT MAX(SUM(ORDAMT)) FROM  ORDERS GROUP BY CUST_ID));
+
+QUESTION 3
+	SELECT * FROM SHIPMENT
+	WHERE SHIPDATE > (CURRENT_DATE);
+
+QUESTION 4
+	SELECT * FROM ITEM WHERE ITEM_ID NOT IN (SELECT DISTINCT(ITEM_ID) FROM ORDER_ITEMS);
+
+QUESTION 5
+	SELECT * 
+	FROM ITEM
+	WHERE ITEM_ID IN( SELECT ITEM_ID FROM ORDER_ITEMS I GROUP BY ITEM_ID HAVING COUNT(*)= 
+		(SELECT MAX(COUNT(*)) FROM ORDER_ITEMS GROUP BY ITEM_ID HAVING ITEM_ID=I.ITEM_ID));

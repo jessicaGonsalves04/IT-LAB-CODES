@@ -1,0 +1,27 @@
+select count(P.driver_id) as Number Of People
+from PARTICIPATED P,ACCIDENT A
+where extract(year from accd_date)=2022 and P.report_number=A.report_number;
+---------------------------------------------------------------------------------------------------------
+select count(c.regno) as TotalCars
+from CAR c, PARTICIPATED p
+where p.regno=c.regno and c.model='S-Cross';
+
+---------------------------------------------------------------------------------------------------------
+
+select distinct name as OWNER_NAME,count(driver_id) as NoOfAccidents,sum(damage_amount) as Total_damage
+from PARTICIPATED  Natural join PERSON 
+group by name
+order by Total_damage DESC;
+
+----------------------------------------------------------------------------------------------------------
+
+select name as NAME , extract (year from accd_date) as YEAR
+from PARTICIPATED
+NATURAL JOIN  PERSON
+NATURAL JOIN ACCIDENT 
+GROUP BY extract (year from accd_date),name
+having count(report_number)>=2;
+----------------------------------------------------------------------------------------------------------
+select *
+from PERSON
+where driver_id not in(select driver_id from PARTICIPATED);

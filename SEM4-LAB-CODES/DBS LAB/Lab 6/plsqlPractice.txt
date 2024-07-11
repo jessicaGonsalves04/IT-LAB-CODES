@@ -1,0 +1,223 @@
+ 
+set serveroutput on
+declare
+    num1 accident.report_number %TYPE;
+    loc1 accident.location %TYPE;
+    begin
+    select report_number,location into num1,loc1
+    from accident
+    where report_number= 5638;
+    dbms_output.put_line(num1||' | '||loc1);
+    end;
+    /
+-----------------------------------------------------------------------------------------
+set serveroutput on
+declare 
+record Accident%rowtype;
+begin 
+select * into record 
+from Accident
+where report_number=5638;
+dbms_output.put_line('Number: '||record.report_number||' Date:'||  record.accd_date||' Location:'|| record.location);
+end;
+/
+-------------------------------------------------------------------------------------------
+set serveroutput on
+declare 
+record participated%rowtype;
+begin 
+select * into record 
+from participated
+where driver_id='D003'; 
+if record.damage_amount<20000 then
+record.damage_amount:=record.damage_amount+400;
+else 
+record.damage_amount:=record.damage_amount+600;
+end if;
+dbms_output.put_line('Driver ID:'|| record.driver_id||' Damage Amount:'|| record.damage_amount);
+end;
+/
+(Note: Here only 1 particular value should satisfy the where clause or else it will give errors)
+---------------------------------------------------------------------------
+set serveroutput on
+declare 
+i number(2);
+begin 
+i:=1;
+loop 
+	dbms_output.put_line(i);
+	i:=i+1;
+exit when i>10;
+end loop;
+end;
+/
+-------------------------------------------------------------------------------------------
+
+set serveroutput ondeclare 
+i number(2);
+begin 
+i:=1;
+while i<=10 loop
+	dbms_output.put_line(i);
+	i:=i+1;
+end loop;
+end;
+/
+-------------------------------------------------------------------------------------------
+set serveroutput on
+declare 
+i number(2);
+begin 
+for i in 1..10 loop
+dbms_output.put_line(i);
+end loop;
+end;
+/
+----------------------------------------------------------------------------------
+#IMPLICIT CURSOR
+set serveroutput on
+declare 
+cnt number(3);
+begin 
+update participated
+set participated.damage_amount=participated.damage_amount+500
+where participated.damage_amount>20000;
+cnt:=SQL%rowcount;
+dbms_output.put_line(cnt||' no of rows updated');
+end;
+/
+-------------------------------------------------------------------------
+#EXPLICIT CURSOR
+set serveroutput on
+declare 
+did Person.driver_id%type;
+dname Person.name%type;
+damt participated.damage_amount%type;
+cursor driver_cursor is
+select driver_id,name ,damage_amount
+from person natural join participated;
+begin 
+open driver_cursor;
+loop
+fetch driver_cursor into did,dname,damt;
+exit when driver_cursor %rowcount>6 or driver_cursor%notfound;
+dbms_output.put_line(did||' | '||dname||' | '||damt);
+end loop;
+close driver_cursor;
+end;
+/
+---------------------------------------------------------------------
+
+LAB EXERCISES
+
+create or replace trigger t1
+after insert ON participated
+for each row
+declare 
+d_id person.driver_id%type;
+d_name person.name%type;
+d_adr person.address%type;
+begin 
+d_id:= :new.driver_id;
+select name, address into d_name,d_adr
+from person
+where driver_id=d_id;
+DBMS_OUTPUT.PUT_LINE('Name: ' || d_name || ', Driver ID: ' || d_id || ', Address: ' || d_adr);
+END;
+/
+drop trigger t1;
+---------------------------------------------------------------------------------------------
+SET SERVEROUTPUT ON;
+
+CREATE OR REPLACE FUNCTION accd_count
+(p_year IN NUMBER)
+RETURN NUMBER
+IS
+  accd_cnt NUMBER;
+BEGIN
+  SELECT COUNT(*)
+  INTO accd_cnt
+  FROM accident
+  WHERE EXTRACT(YEAR FROM accd_date) = p_year;
+  
+  RETURN accd_cnt;
+END;
+/
+
+DECLARE
+  accd_cnt NUMBER;
+  a_year NUMBER := &input_year; 
+BEGIN
+  accd_cnt := accd_count(a_year);
+  DBMS_OUTPUT.PUT_LINE('Total Accident count for year ' || a_year || ' is: ' || accd_cnt);
+END;
+/
+------------------------------------------------------------------------------------------
+
+
+create or replace trigger warn_trig
+before insert on participated
+for each row 
+declare 
+total_count number;
+d_id participated.driver_id%TYPE;
+begin 
+d_id:= :new.driver_id;
+select count(*) into total_count
+from participated 
+where driver_id=d_id;
+if total_count>2 then
+dbms_output.put_line('WARNING NUMBER OF ACCIDENTS IS MORE THAN 2');
+else 
+dbms_output.put_line('ENSURE YOUR SAFETY WHILE DRIVING');
+end if;
+end;
+/
+--------------------------------------------------------------------------------
+create or replace function Bank_withdrawal
+(account_number in number,amount in number)
+return number;
+is 
+balance number ;
+begin 
+select bal into balance 
+from bank_account 
+where acc_number=account_number;
+if(balance>=amount) then
+update bank_account 
+set balance = balance-amount
+where acc_number=account_number;
+return 1;
+else
+return 0;
+-----------------------------------------------------------------------------------
+
+create or replace procedure disp_person
+cursor involved_cur is
+select * from person where p1.driver_id 
+in
+(select unique driver_id
+ from participated natural join participated natural join accident 
+extract(year from accd_date)=2022
+group by driver_id
+having count(*)>2);
+emp_rec involved_cur%rowtype;
+begin 
+open involved_cur;
+loop
+fetch involved_cur into emp_rec;
+exit when involved_cur %notfound;
+dbms_output.put_line(emp_rec.driver_id# || ' ' || emp_rec.name || ' '
+||emp_rec.address);
+end loop; 
+close involved_cur ;
+end;
+/
+
+
+
+
+
+
+
+

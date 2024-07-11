@@ -1,0 +1,68 @@
+1)TABLE CREATION
+--------------------------------
+create table person(
+name varchar(20),
+age number,
+location varchar(10),
+primary key(name));
+
+2)WHEN THERE IS FOREIGN KEY
+----------------------------------
+create table EMPLOYEE(
+emp_id varchar(10),
+e_name varchar(20),
+e_age number,
+location varchar(10),
+primary key(emp_id),
+foreign key (e_name) references person);
+
+3)CHECK CLAUSE 
+---------------------------------------------------
+while creating the table we add a check clause so whenever we insert the values in a table the check condition will be checked before inserting the values
+
+create table department ( 
+deptname varchar (20),
+building varchar (15),
+budget numeric (12,2), 
+primary key (deptname), 
+check (budget > 0));
+
+4)INSERTION
+------------------------------------------------------
+insert into table-name values('a',10,'manipal');
+
+5)DELETION
+-------------------------------------------------------
+delete from table 
+where ............
+
+6)UPDATE
+--------------------------------
+update table name 
+set attribute= ________
+where attribute=_______
+
+eg:
+update instructor
+set salary = salary * 1.05
+where salary <70000;
+
+ 7) CASE CONSTRUCT
+-------------------------------------
+case
+when pred1 then result1
+when pred2 then result2
+. . .
+when predn then resultn
+else result0
+end
+
+8)DROP OR ALTER TABLE
+-------------------------------------------
+drop table name
+alter table r add A D;
+alter table r drop column a;
+
+
+
+

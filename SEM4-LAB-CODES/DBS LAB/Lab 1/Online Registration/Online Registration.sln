@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Online Registration", "Online Registration\Online Registration.csproj", "{897BB3E3-64C1-4CC4-8FC9-5F8B61B53DED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{897BB3E3-64C1-4CC4-8FC9-5F8B61B53DED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{897BB3E3-64C1-4CC4-8FC9-5F8B61B53DED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{897BB3E3-64C1-4CC4-8FC9-5F8B61B53DED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{897BB3E3-64C1-4CC4-8FC9-5F8B61B53DED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

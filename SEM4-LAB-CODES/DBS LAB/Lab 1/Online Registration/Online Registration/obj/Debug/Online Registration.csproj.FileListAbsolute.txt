@@ -1,0 +1,22 @@
+D:\220911009\Online Registration\Online Registration\bin\Debug\Online Registration.exe.config
+D:\220911009\Lab1\Online Registration\Online Registration\bin\Debug\Online Registration.exe.config
+G:\DBS\220911009\Lab1\Online Registration\Online Registration\bin\Debug\Online Registration.exe.config
+G:\DBS\220911009\Lab1\Online Registration\Online Registration\bin\Debug\Online Registration.exe
+G:\DBS\220911009\Lab1\Online Registration\Online Registration\bin\Debug\Online Registration.pdb
+G:\DBS\220911009\Lab1\Online Registration\Online Registration\obj\Debug\Online Registration.csproj.AssemblyReference.cache
+G:\DBS\220911009\Lab1\Online Registration\Online Registration\obj\Debug\Online_Registration.Form1.resources
+G:\DBS\220911009\Lab1\Online Registration\Online Registration\obj\Debug\Online_Registration.Properties.Resources.resources
+G:\DBS\220911009\Lab1\Online Registration\Online Registration\obj\Debug\Online Registration.csproj.GenerateResource.cache
+G:\DBS\220911009\Lab1\Online Registration\Online Registration\obj\Debug\Online Registration.csproj.CoreCompileInputs.cache
+G:\DBS\220911009\Lab1\Online Registration\Online Registration\obj\Debug\Online Registration.exe
+G:\DBS\220911009\Lab1\Online Registration\Online Registration\obj\Debug\Online Registration.pdb
+E:\SEM4-LAB-CODES\DBS LAB\Lab 1\Online Registration\Online Registration\bin\Debug\Online Registration.exe.config
+E:\SEM4-LAB-CODES\DBS LAB\Lab 1\Online Registration\Online Registration\bin\Debug\Online Registration.exe
+E:\SEM4-LAB-CODES\DBS LAB\Lab 1\Online Registration\Online Registration\bin\Debug\Online Registration.pdb
+E:\SEM4-LAB-CODES\DBS LAB\Lab 1\Online Registration\Online Registration\obj\Debug\Online Registration.csproj.AssemblyReference.cache
+E:\SEM4-LAB-CODES\DBS LAB\Lab 1\Online Registration\Online Registration\obj\Debug\Online_Registration.Form1.resources
+E:\SEM4-LAB-CODES\DBS LAB\Lab 1\Online Registration\Online Registration\obj\Debug\Online_Registration.Properties.Resources.resources
+E:\SEM4-LAB-CODES\DBS LAB\Lab 1\Online Registration\Online Registration\obj\Debug\Online Registration.csproj.GenerateResource.cache
+E:\SEM4-LAB-CODES\DBS LAB\Lab 1\Online Registration\Online Registration\obj\Debug\Online Registration.csproj.CoreCompileInputs.cache
+E:\SEM4-LAB-CODES\DBS LAB\Lab 1\Online Registration\Online Registration\obj\Debug\Online Registration.exe
+E:\SEM4-LAB-CODES\DBS LAB\Lab 1\Online Registration\Online Registration\obj\Debug\Online Registration.pdb

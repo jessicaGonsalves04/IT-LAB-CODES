@@ -1,0 +1,26 @@
+create table participated (
+driver_id varchar(20),
+regno varchar(30),
+report_number varchar(20),
+damage-amount number,
+primary key (driver_id,regno,report_number),
+foreign key (driver_id) references person,
+foreign key (regno) references owns,
+foreign key (report_number) references accident delete on cascade);
+
+insert into accident values (7890, date'2022-15-09','manipal');
+
+update accident 
+set damage-amount=25000
+where driver_id=12;
+
+delete from accident 
+where extract(year from date)=2019;
+
+alter table participated 
+add constraint check (damage_amount>9000);
+ 
+select cust_name, count(order_id)as No_Of_Orders,avg(ordamt) as avg_order_amount
+from customer natural join orders
+group by cust_name 
+;

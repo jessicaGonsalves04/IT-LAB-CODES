@@ -1,0 +1,128 @@
+CREATE TABLE PERSON(
+driver_id varchar(30),
+name varchar(50),
+address varchar(100),
+PRIMARY KEY(driver_id)
+);
+
+--------------------------------------------------------------------------------------------
+
+
+CREATE TABLE CAR(
+regno varchar(20),
+model varchar(30),
+Year int,
+PRIMARY KEY(regno)
+);
+
+--------------------------------------------------------------------------------------------
+
+
+CREATE TABLE ACCIDENT(
+report_number int,
+accd_date date,
+location varchar(50),
+PRIMARY KEY(report_number)
+);
+
+--------------------------------------------------------------------------------------------
+
+
+CREATE TABLE OWNS(
+driver_id varchar(30),
+regno varchar(20),
+PRIMARY KEY(driver_id,regno),
+FOREIGN KEY (driver_id) references PERSON(driver_id),
+FOREIGN KEY (regno) references CAR(regno)
+);
+
+--------------------------------------------------------------------------------------------
+
+
+CREATE TABLE PARTICIPATED(
+driver_id varchar(30),
+regno varchar(20),
+report_number int,
+damage_amount int,
+PRIMARY KEY(driver_id,regno,report_number),
+FOREIGN KEY (driver_id) references PERSON(driver_id),
+FOREIGN KEY (regno) references CAR(regno),
+FOREIGN KEY (report_number) references ACCIDENT(report_number) on delete cascade
+);
+
+--------------------------------------------------------------------------------------------
+
+
+INSERT INTO PERSON VALUES('D001','Jim','Manipal');
+INSERT INTO PERSON VALUES('D002','Tim','Udupi');
+INSERT INTO PERSON VALUES('D003','Kim','Malpe');
+INSERT INTO PERSON VALUES('D004','Lin','Manipal');
+INSERT INTO PERSON VALUES('D005','John','Udupi');
+
+--------------------------------------------------------------------------------------------
+
+
+INSERT INTO CAR VALUES('KA20A5512','Wagon-R','2016');
+INSERT INTO CAR VALUES('KA21C4502','Nano','2019');
+INSERT INTO CAR VALUES('KA70A9982','S-Cross','2020');
+INSERT INTO CAR VALUES('KA83A5512','Eco-Sport','2018');
+INSERT INTO CAR VALUES('KA20MC1228','BMW','2017');
+
+--------------------------------------------------------------------------------------------
+
+
+INSERT INTO ACCIDENT VALUES(1221, DATE '2023-03-15','Manglore');
+INSERT INTO ACCIDENT VALUES(1341, DATE '2023-11-11','Kolam');
+INSERT INTO ACCIDENT VALUES(2452, DATE '2022-04-15','Kasargod');
+INSERT INTO ACCIDENT VALUES(8814, DATE '2021-08-22','Nehr Nagar');
+INSERT INTO ACCIDENT VALUES(5638, DATE '2022-10-25','Awadh');
+INSERT INTO ACCIDENT VALUES(5639, DATE '2022-12-05','Awadh');
+
+--------------------------------------------------------------------------------------------
+
+INSERT INTO OWNS VALUES('D002','KA21C4502');
+INSERT INTO OWNS VALUES('D003','KA70A9982');
+INSERT INTO OWNS VALUES('D002','KA20A5512');
+INSERT INTO OWNS VALUES('D001','KA83A5512');
+INSERT INTO OWNS VALUES('D004','KA20MC1228');
+
+--------------------------------------------------------------------------------------------
+
+INSERT INTO PARTICIPATED VALUES('D002','KA21C4502',1221,50000);
+INSERT INTO PARTICIPATED VALUES('D003','KA70A9982',1341,30000);
+INSERT INTO PARTICIPATED VALUES('D002','KA21C4502',2452,10000);
+INSERT INTO PARTICIPATED VALUES('D001','KA83A5512',5638,12000);
+INSERT INTO PARTICIPATED VALUES('D004','KA20MC1228',8814,23000);
+INSERT INTO PARTICIPATED VALUES('D001','KA83A5512',5639,15000);
+
+
+---------------------------------------------------------------------------------------------
+
+update PARTICIPATED
+set damage_amount= 25000
+where report_number= 1221;
+
+---------------------------------------------------------------------------------------------
+
+
+delete from ACCIDENT
+where extract (year from accd_date)= 2021;
+
+---------------------------------------------------------------------------------------------
+
+alter table PERSON ADD AGE int;
+
+----------------------------------------------------------------------------------------------
+
+alter table PERSON drop column AGE ;
+
+----------------------------------------------------------------------------------------------
+alter table PARTICIPATED
+add constarint check(damage_amount>9000);
+----------------------------------------------------------------------------------------
+drop table PARTICIPATED;
+drop table ACCIDENT;
+drop table OWNS;
+drop table CAR;
+drop table PERSON;
+

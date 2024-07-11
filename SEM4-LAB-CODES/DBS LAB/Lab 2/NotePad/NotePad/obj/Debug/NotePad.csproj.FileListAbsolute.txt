@@ -1,0 +1,19 @@
+D:\220911009\Lab2\NotePad\NotePad\bin\Debug\NotePad.exe.config
+D:\220911009\Lab2\NotePad\NotePad\bin\Debug\NotePad.exe
+D:\220911009\Lab2\NotePad\NotePad\bin\Debug\NotePad.pdb
+D:\220911009\Lab2\NotePad\NotePad\obj\Debug\NotePad.csprojResolveAssemblyReference.cache
+D:\220911009\Lab2\NotePad\NotePad\obj\Debug\NotePad.Form1.resources
+D:\220911009\Lab2\NotePad\NotePad\obj\Debug\NotePad.Properties.Resources.resources
+D:\220911009\Lab2\NotePad\NotePad\obj\Debug\NotePad.csproj.GenerateResource.Cache
+D:\220911009\Lab2\NotePad\NotePad\obj\Debug\NotePad.exe
+D:\220911009\Lab2\NotePad\NotePad\obj\Debug\NotePad.pdb
+E:\4th Sem\DBS LAB TRIAL\NotePad\NotePad\bin\Debug\NotePad.exe.config
+E:\4th Sem\DBS LAB TRIAL\NotePad\NotePad\bin\Debug\NotePad.exe
+E:\4th Sem\DBS LAB TRIAL\NotePad\NotePad\bin\Debug\NotePad.pdb
+E:\4th Sem\DBS LAB TRIAL\NotePad\NotePad\obj\Debug\NotePad.csproj.AssemblyReference.cache
+E:\4th Sem\DBS LAB TRIAL\NotePad\NotePad\obj\Debug\NotePad.Form1.resources
+E:\4th Sem\DBS LAB TRIAL\NotePad\NotePad\obj\Debug\NotePad.Properties.Resources.resources
+E:\4th Sem\DBS LAB TRIAL\NotePad\NotePad\obj\Debug\NotePad.csproj.GenerateResource.cache
+E:\4th Sem\DBS LAB TRIAL\NotePad\NotePad\obj\Debug\NotePad.csproj.CoreCompileInputs.cache
+E:\4th Sem\DBS LAB TRIAL\NotePad\NotePad\obj\Debug\NotePad.exe
+E:\4th Sem\DBS LAB TRIAL\NotePad\NotePad\obj\Debug\NotePad.pdb
