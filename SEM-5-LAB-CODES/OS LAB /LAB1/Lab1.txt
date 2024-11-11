@@ -1,0 +1,17 @@
+Hello WorldSometimes, you might not remember the name of UNIX command and you need to search
+for it. For example, if you want to know how to change a file's permissions, you can
+search the man page descriptions for the word “permission” like this: man -k permission.
+All matched manual page names and short descriptions will be displayed that includes
+the keyword “permission” as regular expression.Sometimes you need to run a command on more than one file at a time. The most common
+example of such a command is ls, which lists information about files. In its simplest form,
+without options or arguments, it lists the names of all files in the working directory except
+special hidden files, whose names begin with a dot (.). If you give ls filename arguments,
+it will list those files—which is sort of silly: if your current directory has the files duchess
+and queen in it and you type ls duchess queen, the system will simply print those file-
+names. But sometimes you want to verify the existence of a certain group of files without
+having to know all of their names; for example, if you use a text editor, you might want
+to see which files in your current directory have names that end in .txt. Filenames are so
+important in UNIX that the shell provides a built-in way to specify the pattern of a set of
+filenames without having to know all of the names themselves. You can use special char-
+acters, called wildcards, in filenames to turn them into patterns. The following provides
+the list of the basic wildcards.

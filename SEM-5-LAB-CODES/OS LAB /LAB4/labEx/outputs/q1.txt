@@ -1,0 +1,10 @@
+student@MIT-ICT-LAB8-1:~/220911009/LAB4/labEx$ gedit report1.txt
+student@MIT-ICT-LAB8-1:~/220911009/LAB4/labEx$ gedit report2.txt
+student@MIT-ICT-LAB8-1:~/220911009/LAB4/labEx$ bash q1.sh  report1.txt report2.txt
+File 'report1.txt' copied to 'report2.txt'.
+student@MIT-ICT-LAB8-1:~/220911009/LAB4/labEx$ ls
+q1.sh  report1.txt  report2.txt
+student@MIT-ICT-LAB8-1:~/220911009/LAB4/labEx$ cat report2.txt
+Hey this is report 1
+How are you??
+

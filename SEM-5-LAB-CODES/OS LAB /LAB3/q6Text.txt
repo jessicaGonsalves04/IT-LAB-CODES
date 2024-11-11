@@ -1,0 +1,5 @@
+Example: this is the first occurrence so should be replaced.
+This is a sentence with ex: in the middle of it.
+Another line with ex: at the start.
+This line has a period. Example: and this should be replaced.
+

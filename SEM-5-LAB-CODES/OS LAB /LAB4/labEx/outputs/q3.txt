@@ -1,0 +1,8 @@
+student@MIT-ICT-LAB8-1:~/220911009/LAB4/labEx$ bash q3.sh "OS LAB" "Quoted strings" "Command Line" "Sort it"
+Total words: 4
+The sorted list is: 
+1) Command Line
+2) OS LAB
+3) Quoted strings
+4) Sort it
+

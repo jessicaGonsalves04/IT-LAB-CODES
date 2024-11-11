@@ -1,0 +1,24 @@
+Q2.1 grep -E '^..$' LabEx.txt 
+o/p an me
+
+Q2.2 grep -E '^[A-Z]' LabEx.txt
+Apple
+
+Q2.3 grep -E '[.]$' LabEx.txt
+a day in my life.
+
+Q2.4 grep -E ' ' LabEx.txt
+a day in my life.
+how are you?
+
+Q.2.5 grep -E '[0-9]' LabEx.txt > result.txt
+cat result.txt
+iambore29
+hello5
+
+Q3.1 grep 'ICT' studentInformation.txt | wc -w
+3
+
+Q3.2 sed 's/IT/Information Technology/' studentInformation.txt > ITSudents.txt
+
+

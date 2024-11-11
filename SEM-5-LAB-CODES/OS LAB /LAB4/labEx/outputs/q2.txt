@@ -1,0 +1,13 @@
+student@MIT-ICT-LAB8-1:~/220911009/LAB4/labEx$ mkdir q2
+student@MIT-ICT-LAB8-1:~/220911009/LAB4/labEx$ gedit q2.sh
+student@MIT-ICT-LAB8-1:~/220911009/LAB4/labEx$ touch removeFile1.txt
+student@MIT-ICT-LAB8-1:~/220911009/LAB4/labEx$ touch removeFile2.txt
+student@MIT-ICT-LAB8-1:~/220911009/LAB4/labEx$ touch removeFile3.txt
+student@MIT-ICT-LAB8-1:~/220911009/LAB4/labEx$ touch removeFile4.txt
+student@MIT-ICT-LAB8-1:~/220911009/LAB4/labEx$ gedit q2.sh
+student@MIT-ICT-LAB8-1:~/220911009/LAB4/labEx$ bash q2.sh removeFile1.txt removeFile2.txt
+rm: remove regular empty file 'removeFile1.txt'? y
+removeFile1.txt removed
+rm: remove regular empty file 'removeFile2.txt'? y
+removeFile2.txt removed
+
